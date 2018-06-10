@@ -22,6 +22,12 @@ cp $f$h ${t}p79_$h
 h=`head -n 1 $l`
 cp $f$h $t
 
+# 下から2行目のファイルがディレクトリにあれば削除する
+b=`tail -n 2 $l| head -n 1`
+if [ -e $t$b ]; then
+    rm $t$b
+fi
+
 # 1行目を最下行へ移動
 echo $h >> $l
 tail -n +2 $l > p
