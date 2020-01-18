@@ -6,18 +6,16 @@ f="../../Music/system/"
 t="../../Music/learning/"
 l="list.txt"
 
-# 下から2行め（2つ前）のファイルをコピーする
-h=`tail -n 2 $l | head -n 1`
-cp $f$h ${t}p2_$h
-# 下から7行め（7つ前）のファイルをコピーする
-h=`tail -n 7 $l | head -n 1`
-cp $f$h ${t}p7_$h
-# 下から24行め（24つ前）のファイルをコピーする
-h=`tail -n 24 $l | head -n 1`
-cp $f$h ${t}p24_$h
-# 下から79行め（79つ前）のファイルをコピーする
-h=`tail -n 79 $l | head -n 1`
-cp $f$h ${t}p79_$h
+# 下からn行め（nつ前）のファイルをコピーする
+#ns="1 2 3 5 8 13 21 34 55 89 144 233 377 610"
+#ns="1 2 3 5 8"
+ns=`f=0 s=1; for ((;f+s<12;)); do t=$((f+s)) f=$s s=$t; echo -n $t\ ; done;`
+for n in $ns
+do
+	h=`tail -n $n $l | head -n 1`
+	cp $f$h ${t}p${n}_$h
+done
+
 # 1行目のファイルをコピーする
 h=`head -n 1 $l`
 cp $f$h $t
