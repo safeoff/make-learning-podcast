@@ -10,12 +10,11 @@ l=$1".txt"
 # 1 2 3 4 5 6 8 10 13 17 22 29 38 50 66 88 117 156 208 277 369 492 656 874
 c=`tail -n 1 $l`
 c=${c% *}
-ns=`echo -n '1 2 3 4 '; s=5; for ((;s<$c;)); do echo -n $s\ ;s=$((s*4/3)); done;`
+ns=`echo -n '1 2 3 4 5 6 7 '; s=8; for ((;s<$c;)); do echo -n $s\ ;s=$((s*7/6)); done;`
 for n in $ns
 do
 	h=`tail -n $n $l | head -n 1`
 	h=${h#* }
-	echo $h
 	cp $f$h ${t}p${n}_$h
 done
 
