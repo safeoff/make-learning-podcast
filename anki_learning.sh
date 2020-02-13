@@ -3,7 +3,7 @@
 #引数1 systemかduo
 
 # パスとか
-f="../../Music/"$1
+f="../../Music/"$1"/"
 t="../../Music/learning/"
 l="../../AnkiDroid/collection.log"
 
@@ -38,5 +38,5 @@ IFS=$'\n';
 for mp3 in $mp3s
 do
 	new=`date "+%m%d"`-$mp3
-	echo $f$mp3 $t$new
+	cp $f$mp3 $t$new
 done
