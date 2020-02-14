@@ -11,7 +11,7 @@ l="../../AnkiDroid/collection.log"
 ids=""
 day=`date --date '1 day ago' +%s`
 IFS=$'\n';
-for line in `tail -n 1000 $l | grep mId`
+for line in `cat $l | grep mId`
 do
 	time=${line%%]*}
 	time=${time##*[}
