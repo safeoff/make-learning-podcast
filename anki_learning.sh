@@ -7,9 +7,9 @@ f="../../Music/"$1"/"
 t="../../Music/learning/"
 l="../../AnkiDroid/collection.log"
 
-# 一日分のlogを取得
+# 2日分のlogを取得
 ids=""
-day=`date --date '1 day ago' +%s`
+day=`date --date '2 day ago' +%s`
 IFS=$'\n';
 for line in `cat $l | grep mId`
 do
