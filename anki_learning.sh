@@ -29,14 +29,16 @@ for id in $ids
 do
 	mp3=`grep $id $1map.txt`
 	mp3=${mp3##* }
-	mp3s+="\n"$mp3
+	mp3s+="\n"$f$mp3
 done
 mp3s=`echo -e $mp3s | sort | uniq`
 
 # mp3をコピー 日付+ファイル名
 IFS=$'\n';
-for mp3 in $mp3s
-do
-	new=`date "+%m%d"`-$mp3
-	cp $f$mp3 $t$new
-done
+new=`date "+%m%d"`-$1.mp3
+cat $mp3s > $t$new
+#for mp3 in $mp3s
+#do
+#	new=`date "+%m%d"`-$mp3
+#	cp $f$mp3 $t$new
+#done
