@@ -37,7 +37,7 @@ mp3s=`echo -e $mp3s | sort | uniq`
 
 # mp3をコピー 日付+ファイル名
 IFS=$'\n';
-new=`date "+%m%d00"`-$1.mp3
+new=`date "+%m%d"`-$1.mp3
 cat $mp3s > $t$new
 #echo $mp3s
 #for mp3 in $mp3s
