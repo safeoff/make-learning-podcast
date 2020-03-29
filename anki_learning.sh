@@ -1,6 +1,6 @@
 #!/bin/bash
 # Ankiで今日やったカードの英語のmp3をコピーする
-#引数1 systemかduo
+#引数1 systemかduoかforest
 
 # パスとか
 f="../../Music/"$1"/"
@@ -33,15 +33,12 @@ do
 		mp3s+="\n"$f$mp3
 	fi
 done
-mp3s=`echo -e $mp3s | sort | uniq`
+mp3s=`echo -e $mp3s | sort | uniq | shuf`
 
 # mp3をコピー 日付+ファイル名
 IFS=$'\n';
-new=`date "+%m%d"`-$1.mp3
-cat $mp3s > $t$new
-#echo $mp3s
-#for mp3 in $mp3s
-#do
-#	new=`date "+%m%d"`-$mp3
-#	cp $f$mp3 $t$new
-#done
+if [[ $mp3s != "" ]]; then
+	new=`date "+%m%d"`-$1.mp3
+	cat $mp3s > $t$new
+	#echo $mp3s
+fi
